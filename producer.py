@@ -16,6 +16,8 @@
 
 import os   # need this for popen
 import time # for sleep
+from datetime import datetime
+import json
 from kafka import KafkaProducer  # producer of events
 
 # We can make this more sophisticated/elegant but for now it is just
@@ -43,7 +45,12 @@ for i in range (100):
     # You will need to modify it to send a JSON structure, say something
     # like <timestamp, contents of top>
     #
-    producer.send ("utilizations", value=bytes (contents, 'ascii'))
+    time_stamp = datetime.now().strftime('%Y-%m-%d %H:%M%S %f')
+    data = {
+        "msg":contents, 
+        "timestamp":time_stamp
+    }
+    producer.send ("utilizations", bytes(json.dumps(data), 'ascii'))
     producer.flush ()   # try to empty the sending buffer
 
     # sleep a second
