@@ -19,7 +19,8 @@ import couchdb
 
 # We can make this more sophisticated/elegant but for now it is just
 # hardcoded to the setup I have on my local VMs
-couch = couchdb.Server('http://admin:123456@127.0.0.1:5984/')
+couch = couchdb.Server('http://admin:password@127.0.0.1:5984/')
+
 db = couch['test']
 
 # acquire the consumer
