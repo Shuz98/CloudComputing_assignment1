@@ -57,7 +57,7 @@ for i in range (100):
     time.sleep (1)
 
 # we are done
-producer.close ()
+# producer.close ()
     
 
 
