@@ -51,7 +51,7 @@ for i in range (100):
         "timestamp":time_stamp
     }
     producer.send ("utilizations", bytes(json.dumps(data), 'ascii'))
-    producer.flush ()   # try to empty the sending buffer
+    # producer.flush ()   # try to empty the sending buffer
 
     # sleep a second
     time.sleep (1)
